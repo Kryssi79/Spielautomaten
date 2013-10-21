@@ -2,6 +2,7 @@ package com.MeLxKry.gameMa;
 
 
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.*;
 
@@ -12,14 +13,16 @@ import org.bukkit.util.*;
 
 public class main extends JavaPlugin 
 {
+	private String pluginName;
+	
 	
 	@Override
 	public void onEnable()
 	{
 		// Save a copy of the default config.yml if one is not there
         //this.saveDefaultConfig();
-        
-		System.out.println("starte:   gamingMachines - Plugin  ");
+		loadVersion();
+		printInConsole("starte:   gamingMachines - Plugin ");
 		Bukkit.getLogger().info("gamingMachines  Plugin  enabled  ... ");
 		
 		// Events: 
@@ -30,7 +33,19 @@ public class main extends JavaPlugin
 	@Override
 	public void onDisable()
 	{
-		System.out.println("beende:   gamingMachines - Plugin  ");
+		printInConsole(this.pluginName + " disabled");
 	}
+	
+	
+	private void loadVersion() {
+        PluginDescriptionFile pdfFile = getDescription();
+        this.pluginName = (pdfFile.getName() + " v" + pdfFile.getVersion() + " ");
+    }
+	
+	
+	public static void printInConsole(String str) {
+        System.out.println("[ gamingMachines ] " + str);
+    }
+	
 	
 }
