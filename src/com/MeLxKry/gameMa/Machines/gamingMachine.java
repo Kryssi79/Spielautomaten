@@ -7,8 +7,11 @@ import org.bukkit.Server;
 public abstract class  gamingMachine 
 {
 	private String m_Name = "";
+	private String[] m_signBlockText = new String[4];
+	
 	private boolean isEnabled = false;
 	private boolean initialized = false;
+	
 	
 	
 	public gamingMachine() {}
