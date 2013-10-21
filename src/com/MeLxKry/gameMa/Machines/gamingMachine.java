@@ -1,7 +1,25 @@
 package com.MeLxKry.gameMa.Machines;
 
 
-public class gamingMachine 
+import org.bukkit.Server;
+
+
+public abstract class  gamingMachine 
 {
-	String m_Name = "";
+	private String m_Name = "";
+	private boolean isEnabled = false;
+	private boolean initialized = false;
+	
+	
+	public gamingMachine() {}
+	
+	
+	public String getName() {
+		return this.m_Name;
+	}
+	
+	public void setName(String name) {
+		this.m_Name = name;
+	}
+	
 }

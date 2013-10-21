@@ -1,6 +1,7 @@
 package com.MeLxKry.gameMa;
 
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.*;
 
@@ -19,6 +20,7 @@ public class main extends JavaPlugin
         //this.saveDefaultConfig();
         
 		System.out.println("starte:   gamingMachines - Plugin  ");
+		Bukkit.getLogger().info("gamingMachines  Plugin  enabled  ... ");
 		
 		// Events: 
         // getServer().getPluginManager().registerEvents(new EventListener(this), this);
