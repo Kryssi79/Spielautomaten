@@ -5,4 +5,7 @@
 *.war
 *.ear
 /bin
+/.settings
+/.classpath
+/.project
 /URLs.txt
