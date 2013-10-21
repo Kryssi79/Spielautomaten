@@ -1,0 +1,7 @@
+name: gamingMachines
+version: 0.1
+description: gaming machines  for  bukkit server
+authors: [MemoryLeakX, Kryssi79]
+
+main: com.MeLxKry.gameMa.main
+
