@@ -30,6 +30,9 @@ public class EventRouter
             }
             String sLine0 = signBlock.getLine(0).toLowerCase();
             if(sLine0=="init") { return true; }
+            if(sLine0=="ready") { 
+            	//TODO:  Spielautomat ist bereit zum spielen
+            }
             String sLine1 = signBlock.getLine(1).toLowerCase();
             for(int iLi=0; iLi<main.sInits.length; iLi++)  
             {

@@ -11,4 +11,7 @@ public class bandit  extends gamingMachine
 		this.setName("Einarmiger Bandit");
 	}
 	
+	
+	//TODO:  Machine erstellen  =>  initialized = true / Status "ready"
+	
 }

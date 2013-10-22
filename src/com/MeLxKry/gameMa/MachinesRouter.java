@@ -26,6 +26,7 @@ public class MachinesRouter  implements Listener
 	{
 		String sRouterStatus = event.RouterStatus();
         if(sRouterStatus=="init") { onInit(event); }
+        if(sRouterStatus=="ready") {  }  //TODO:  wenn bereit zum spielen
 	}
 	
 	
@@ -47,6 +48,7 @@ public class MachinesRouter  implements Listener
         	bandit gamingMachine = new bandit();
         	String sName = gamingMachine.getName();
         	System.out.println("  sName = " + sName );
+        	//TODO:  Machine erstellen  =>  Status auf "ready" (bereit zum spielen) => Infos in  Block Metadata  schreiben 
         }
         else if( iMachineID == 2 )
         {
