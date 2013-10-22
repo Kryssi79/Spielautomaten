@@ -26,7 +26,7 @@ public class main extends JavaPlugin
 		Bukkit.getLogger().info("gamingMachines  Plugin  enabled  ... ");
 		
 		// Events: 
-        // getServer().getPluginManager().registerEvents(new EventListener(this), this);
+        getServer().getPluginManager().registerEvents(new EventListener(this), this);
 	}
 	
 	
