@@ -1,6 +1,7 @@
 package com.MeLxKry.gameMa;
 
 import com.MeLxKry.gameMa.*;
+import com.MeLxKry.gameMa.Machines.bandit;
 import com.MeLxKry.gameMa.events.Router;
 
 import org.bukkit.block.Block;
@@ -23,13 +24,36 @@ public class MachinesRouter  implements Listener
 	@EventHandler(priority=EventPriority.NORMAL )
 	public void onRouterEvent(Router event) 
 	{
-		System.out.println(" onRouterEvent()  " );
+		String sRouterStatus = event.RouterStatus();
+        if(sRouterStatus=="init") { onInit(event); }
+	}
+	
+	
+	private void onInit(Router event)
+	{
+		System.out.println(" onRouterEvent()  =>  onInit() " );
 		Block block = event.getBlock();
 		Sign signBlock = (Sign) block.getState();
-		System.out.println("  RouterStatus =  " + event.RouterStatus() );
+		String sRouterStatus = event.RouterStatus();
+		String sInitLine = signBlock.getLine(1).toLowerCase();
+		System.out.println("  RouterStatus =  " + sRouterStatus );
 		System.out.println("  .getLine(0)  " + signBlock.getLine(0) );
 		System.out.println("  .getLine(1)  " + signBlock.getLine(1) );
         System.out.println("  .getLine(2)  " + signBlock.getLine(2) );
+        if(sInitLine=="[game.bandit]")
+        {
+        	bandit gamingMachine = new bandit();
+        	String sName = gamingMachine.getName();
+        	System.out.println("  sName = " + sName );
+        }
+        else if(sInitLine=="")
+        {
+        	// ... 
+        }
+        else
+        {
+        	// ... 
+        }
 	}
 	
 }
