@@ -14,6 +14,7 @@ import org.bukkit.util.*;
 public class main extends JavaPlugin 
 {
 	private String pluginName;
+	public static String[] sInits = { "game.bandit" };  // for EventRouter   signBlock.getLine(1)
 	
 	
 	@Override

@@ -10,34 +10,55 @@ import org.bukkit.event.block.BlockRedstoneEvent;
 public class EventRouter 
 {
 
-	public void handleRedstoneEvent(Block block, BlockRedstoneEvent event, int delayTicks) 
+	public boolean handleRedstoneEvent(Block block, BlockRedstoneEvent event) 
 	{
         if (istSchild(block)) 
         {
-        	System.out.println(" plugin:  handleRedstoneEvent()  ");
             Sign signBlock = (Sign) block.getState();
             if (signBlock == null) {
-                return;
+                return false;
             }
-            if (signBlock.getLine(1) == null) {
-                return;
+            // System.out.println(" plugin:  handleRedstoneEvent()  ");
+            if ( signBlock.getLine(1) == null) { return false; }
+            if ( signBlock.getLine(1) == "") {
+            	System.out.println("  .getLine(1)  " + signBlock.getLine(1) );
+            	return false;
             }
-            String sLine1 = signBlock.getLine(1);
-            System.out.println("   .getLine(0)  " + signBlock.getLine(0) );
-            System.out.println("   .getLine(1)  " + sLine1 );
-            System.out.println("   .getLine(2)  " + signBlock.getLine(2) );
-            //istAutomat(signBlock, block);
+            String sLine0 = signBlock.getLine(0).toLowerCase();
+            if(sLine0=="init") { return true; }
+            String sLine1 = signBlock.getLine(1).toLowerCase();
+            for(int iLi=0; iLi<main.sInits.length; iLi++)  
+            {
+            	String sInit = main.sInits[iLi].toLowerCase();
+            	if (sLine1.contains(sInit))
+            	{
+            		signBlock.setLine(0, "init"); //  "init"  =>  "is in use"  
+            		signBlock.update();
+            		Machines(signBlock);
+            		return true;
+            	}
+            }
+            return false;
         }
+        return false;
 	}
 	
 	
+	private void Machines(Sign signBlock)
+	{
+		//  MachinesRouter
+		System.out.println("  .getLine(0)  " + signBlock.getLine(0) );
+		System.out.println("  .getLine(1)  " + signBlock.getLine(1) );
+        System.out.println("  .getLine(2)  " + signBlock.getLine(2) );
+	}
+	
 	public void umschauenNachSchild(Block block, BlockRedstoneEvent event)
 	{
-		handleRedstoneEvent(block.getRelative(0, 0, 0), event, 1);
-		handleRedstoneEvent(block.getRelative(1, 0, 0), event, 1);
-		handleRedstoneEvent(block.getRelative(-1, 0, 0), event, 1);
-		handleRedstoneEvent(block.getRelative(0, 0, 1), event, 1);
-		handleRedstoneEvent(block.getRelative(0, 0, -1), event, 1);
+		handleRedstoneEvent(block.getRelative(0, 0, 0), event);
+		handleRedstoneEvent(block.getRelative(1, 0, 0), event);
+		handleRedstoneEvent(block.getRelative(-1, 0, 0), event);
+		handleRedstoneEvent(block.getRelative(0, 0, 1), event);
+		handleRedstoneEvent(block.getRelative(0, 0, -1), event);
 	}
 	
 	public boolean istSchild(Block block)
