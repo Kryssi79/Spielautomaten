@@ -28,6 +28,7 @@ public class main extends JavaPlugin
 		
 		// Events: 
         getServer().getPluginManager().registerEvents(new EventListener(this), this);
+        getServer().getPluginManager().registerEvents(new MachinesRouter(this), this);
 	}
 	
 	

@@ -1,5 +1,9 @@
 package com.MeLxKry.gameMa;
 
+
+import com.MeLxKry.gameMa.*;
+import com.MeLxKry.gameMa.events.Router;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
@@ -34,7 +38,7 @@ public class EventRouter
             	{
             		signBlock.setLine(0, "init"); //  "init"  =>  "is in use"  
             		signBlock.update();
-            		Machines(signBlock);
+            		Machines(block, event, "init");
             		return true;
             	}
             }
@@ -44,13 +48,13 @@ public class EventRouter
 	}
 	
 	
-	private void Machines(Sign signBlock)
+	private void Machines(Block block, BlockRedstoneEvent event, String sStatus)
 	{
-		//  MachinesRouter
-		System.out.println("  .getLine(0)  " + signBlock.getLine(0) );
-		System.out.println("  .getLine(1)  " + signBlock.getLine(1) );
-        System.out.println("  .getLine(2)  " + signBlock.getLine(2) );
+		//  MachinesRouter ... 
+        Router RouterEventer = new Router(block, event.getOldCurrent(), event.getNewCurrent(), sStatus); 
+        Bukkit.getPluginManager().callEvent( RouterEventer );
 	}
+	
 	
 	public void umschauenNachSchild(Block block, BlockRedstoneEvent event)
 	{
