@@ -8,14 +8,16 @@ import org.bukkit.event.block.BlockRedstoneEvent;
 
 public final  class Router extends BlockRedstoneEvent 
 {
-	private final String RouterStatus;
+	private static  HandlerList handlers = new HandlerList();
+	private final String m_RouterStatus;
+	private final int m_ID;
 	
-	public Router(Block block, int oldCurrent, int newCurrent, String RouterStatus) {
+	public Router(Block block, int oldCurrent, int newCurrent, String RouterStatus, int iMachineID) {
 		super(block, oldCurrent, newCurrent);
-		this.RouterStatus = RouterStatus;
+		this.m_RouterStatus = RouterStatus;
+		this.m_ID = iMachineID;
 	}
 
-	private static  HandlerList handlers = new HandlerList();
 	 
 	@Override
 	public HandlerList getHandlers() {
@@ -24,7 +26,12 @@ public final  class Router extends BlockRedstoneEvent
 	
 	public String RouterStatus()
 	{
-		return this.RouterStatus;
+		return this.m_RouterStatus;
+	}
+	
+	public int getMachineID()
+	{
+		return this.m_ID;
 	}
 	
 	public static HandlerList getHandlerList() {

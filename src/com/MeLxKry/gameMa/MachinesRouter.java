@@ -35,18 +35,20 @@ public class MachinesRouter  implements Listener
 		Block block = event.getBlock();
 		Sign signBlock = (Sign) block.getState();
 		String sRouterStatus = event.RouterStatus();
+		int iMachineID = event.getMachineID();
 		String sInitLine = signBlock.getLine(1).toLowerCase();
 		System.out.println("  RouterStatus =  " + sRouterStatus );
+		System.out.println("   Machine ID  =  " + iMachineID );
 		System.out.println("  .getLine(0)  " + signBlock.getLine(0) );
 		System.out.println("  .getLine(1)  " + signBlock.getLine(1) );
         System.out.println("  .getLine(2)  " + signBlock.getLine(2) );
-        if(sInitLine=="[game.bandit]")
+        if( iMachineID == 1 )
         {
         	bandit gamingMachine = new bandit();
         	String sName = gamingMachine.getName();
         	System.out.println("  sName = " + sName );
         }
-        else if(sInitLine=="")
+        else if( iMachineID == 2 )
         {
         	// ... 
         }

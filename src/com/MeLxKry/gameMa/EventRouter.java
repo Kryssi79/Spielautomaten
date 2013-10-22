@@ -38,7 +38,7 @@ public class EventRouter
             	{
             		signBlock.setLine(0, "init"); //  "init"  =>  "is in use"  
             		signBlock.update();
-            		Machines(block, event, "init");
+            		Machines(block, event, "init", iLi+1);
             		return true;
             	}
             }
@@ -48,10 +48,10 @@ public class EventRouter
 	}
 	
 	
-	private void Machines(Block block, BlockRedstoneEvent event, String sStatus)
+	private void Machines(Block block, BlockRedstoneEvent event, String sStatus, int iMachineID)
 	{
 		//  MachinesRouter ... 
-        Router RouterEventer = new Router(block, event.getOldCurrent(), event.getNewCurrent(), sStatus); 
+        Router RouterEventer = new Router(block, event.getOldCurrent(), event.getNewCurrent(), sStatus, iMachineID); 
         Bukkit.getPluginManager().callEvent( RouterEventer );
 	}
 	
